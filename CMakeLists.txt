@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(MyProject C)
+project(RaylibBasicFfmpegVideoEditExample C)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(RAYLIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/raylib")

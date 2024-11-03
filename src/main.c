@@ -15,7 +15,7 @@
 #define VID "data/test.mpg"
 
 int main(void) {
-  InitWindow(WIDTH, HEIGHT, "raylib example - basic template");
+  InitWindow(WIDTH, HEIGHT, "raylib example - basic ffmpeg video edit");
   mpeg2dec_t *decoder = mpeg2_init();
   if (!decoder) {
     TraceLog(LOG_ERROR, "could not init the decoder");
@@ -31,7 +31,7 @@ int main(void) {
 
   FILE *ffmpeg =
       popen("ffmpeg -loglevel verbose -y -f rawvideo -pix_fmt rgba -s 768x480 "
-            "-r 60 -i - -vf \"vflip\" -c:v libx264 -pix_fmt yuv420p output.mp4",
+            "-r 30 -i - -vf \"vflip\" -c:v libx264 -pix_fmt yuv420p output.mp4",
             "w");
 
   if (!ffmpeg) {
@@ -48,7 +48,7 @@ int main(void) {
   bool gotDims = false;
   bool endRecording = false;
 
-  SetTargetFPS(60);
+  SetTargetFPS(30);
   while (!WindowShouldClose() && !endRecording) {
     lastFrame = frameCount;
     while (lastFrame == frameCount) {

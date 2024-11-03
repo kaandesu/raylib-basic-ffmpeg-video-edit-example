@@ -1,7 +1,6 @@
-## raylib-mpeg2-examle
+## raylib-basic-ffmpeg-video-edit-example
 
-This project is about playing video to Raylib using [libmpeg2](https://libmpeg2.sourceforge.io/)
-for decoding.
+Play an input video decoded with [libmpeg2](https://libmpeg2.sourceforge.io/), then render whatever you want, then record the texture back to a video format with ffmpeg.
 
 <div align="center">
   <img width="520" src="./data/demo.gif">
