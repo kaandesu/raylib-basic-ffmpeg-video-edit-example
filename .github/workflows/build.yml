@@ -1,0 +1,33 @@
+name: CMake on a single platform
+
+on:
+  push:
+    tags:
+      - "v*"
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build raylib
+        run: |
+          cd lib/raylib
+          mkdir -p build && cd build
+          cmake -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} ..
+          make
+
+      - name: Build my_program
+        run: |
+          mkdir -p build && cd build
+          cmake -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} ..
+          make
+
+      - name: Test
+        working-directory: build
+        run: ctest -C ${{ env.BUILD_TYPE }}
